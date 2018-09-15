@@ -52,8 +52,8 @@ def zoo_profile():
         f.write(s)
 
     # compile latex source code and open pdf file
-    os.system('pdflatex {}.tex'.format(prefix))
-    openfile('{}.pdf'.format(prefix))
+    # os.system('pdflatex {}.tex'.format(prefix))
+    # openfile('{}.pdf'.format(prefix))
 
 
 def openfile(filename):

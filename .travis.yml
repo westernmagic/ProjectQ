@@ -1,5 +1,6 @@
 sudo: false
 os: linux
+dist: trusty
 language: python
 
 python:
@@ -30,10 +31,13 @@ install:
   - pip install -e .
 
 before_script:
-  - pip install pytest-cov coveralls
+  - pip install pytest-cov coveralls jupyter nbval
 
 script:
   - OMP_NUM_THREADS=1 pytest projectq --cov projectq
+  - shopt -s extglob
+  #- for file in ./examples/!(*ibm*).py; do echo "python ${file}" && python ${file}; done
+  #- for file in ./examples/!(*ibm*).ipynb; do echo "jupyter nbconvert --to notebook -y --no-prompt --execute ${file}" && jupyter nbconvert --to notebook -y --no-prompt --execute ${file}; done
 
 after_success:
   - coveralls
